@@ -1,4 +1,4 @@
-class Chain {
+class Chain{
     constructor(bodyA,bodyB){
         var options={
             bodyA: bodyA,
