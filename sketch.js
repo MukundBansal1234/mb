@@ -48,7 +48,7 @@ function draw(){
     box2.display();
     ground.display();
     pig1.display();
-    log1.display();
+    log1.display(); 
 
     box3.display();
     box4.display();
@@ -71,4 +71,10 @@ function mouseDragged(){
 
 function mouseReleased(){
     slingShot.fly();
+}
+
+function keyPressed(){
+    if (keyCode === 32){
+       slingShot.attach(bird.body); 
+    }
 }
