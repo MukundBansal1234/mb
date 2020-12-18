@@ -7,6 +7,8 @@ var engine, world;
 var box1, pig1;
 var backgroundImg,platform;
 var slingShot;
+var gameState;
+
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -38,7 +40,7 @@ function setup(){
     bird = new Bird(200,50);
 
     slingShot= new SlingShot(bird.body,{x:200,y:50});
-   
+   gameState="onSling";
 }
 
 function draw(){
@@ -67,15 +69,19 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
-}
+    if(gameState !== "launched"){
+        Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
+    }
+ }
+   
 
 function mouseReleased(){
     slingShot.fly();
+    gameState="launched";
 }
 
 function keyPressed(){
     if (keyCode === 32){
-       slingShot.attach(bird.body); 
+       //slingShot.attach(bird.body); 
     }
 }
